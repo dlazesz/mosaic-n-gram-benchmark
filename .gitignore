@@ -1,3 +1,5 @@
+output.txt
+# ---> Python
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -127,3 +129,12 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# PyCharm
+.idea
+
+# Project specific files
+input_fix.txt
+input_var.txt
+input_fix_1000.txt
+input_var_1000.txt
