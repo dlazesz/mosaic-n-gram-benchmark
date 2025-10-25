@@ -9,7 +9,7 @@ avg_time_alt() {
     (($# > 0)) || return;
     # Alias command to he able to handle commands containing pipes
     alias cmd="$*"
-    { read foo real; read foo user; read foo sys ;} < <(
+    { read -r foo real; read -r foo user; read -r foo sys ;} < <(
         { time -p for((;n--;)){ cmd &>/dev/null ;} ;} 2>&1
     )
     # Replace decimal separator for bc and restore it if needed

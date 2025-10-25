@@ -6,11 +6,18 @@ from math import prod
 from os import devnull
 from timeit import repeat
 from argparse import ArgumentParser
-from itertools import islice, tee, chain, cycle, repeat as itertools_repeat
+from itertools import product, islice, tee, chain, cycle, repeat as itertools_repeat
 
 from memory_profiler import profile as memory_profile
 
 chain_from_iterable = chain.from_iterable
+
+
+def ng_product(it, n, _):
+    """An n-gram feature permutation generator using the built-in product() function"""
+    for ngram in n_grams_of_words(it, n):
+        for combo in product(*ngram):
+            yield ' '.join(combo)
 
 
 def ng_recursive(it, n, _):
@@ -36,7 +43,7 @@ def ng_iter_list_out(it, n, _):
         max_len = prod(n_gram_lens)
         # To get mosaic n-grams in tuples, zip together the iterators come from the above:
         # 1. Get max_len elements (islice)
-        # 2. by cycling through the iterator repatedly (cycle)
+        # 2. by cycling through the iterator repeatedly (cycle)
         # 3. chaining together previous iterators as they come (chain_from_iterable())
         # 4. repeating each subelement prod(n_gram_lens[i+1:]) times for all subelements (itertools_repeat)
         # 5. for all elements of the n-gram (enumerate)
@@ -56,7 +63,7 @@ def ng_iter_list_in(it, n, _):
         max_len = prod(n_gram_lens)
         # To get mosaic n-grams in tuples, zip together the iterators come from the above:
         # 1. Get max_len elements (islice)
-        # 2. by cycling through the iterator repatedly (cycle)
+        # 2. by cycling through the iterator repeatedly (cycle)
         # 3. chaining together previous iterators as they come (chain_from_iterable())
         # 4. repeating each subelement prod(n_gram_lens[i+1:]) times for all subelements (itertools_repeat)
         # 5. for all elements of the n-gram (enumerate)
@@ -74,9 +81,9 @@ def ng_iter_fix_len(it, max_n, fixed_len):  # No padding only!
     for ngram in n_grams_of_words(it, max_n):
         # Zip together the iterators come from the above:
         # 1. Get max_len element (islice)
-        # 2. by cycling through the iterator repatedly (cycle)
+        # 2. by cycling through the iterator repeatedly (cycle)
         # 3. repeating each element fixed_len ** (max_n - (i+1)) times (itertools_repeat)
-        # 4. for all elemeents of the n-gram (enumerate)
+        # 4. for all elements of the n-gram (enumerate)
         # The list() cannot be omitted, because the value of i is interpreted
         #  only at zip()-ing, when i is already changed by the outer loop
         yield from zip(*(islice(cycle(chain_from_iterable(
@@ -87,14 +94,14 @@ def ng_iter_fix_len(it, max_n, fixed_len):  # No padding only!
 
 
 def ng_iter_fix_len2(it, max_n, fixed_len):  # No padding only!
-    n_gram_lens = [fixed_len ** (max_n - (i+1)) for i in range(max_n)]
+    n_gram_lens = [fixed_len ** (max_n - (i + 1)) for i in range(max_n)]
     max_len = fixed_len ** max_n
     for ngram in n_grams_of_words(it, max_n):
         # Zip together the iterators come from the above:
         # 1. Get max_len element (islice)
-        # 2. by cycling through the iterator repatedly (cycle)
+        # 2. by cycling through the iterator repeatedly (cycle)
         # 3. repeating each element fixed_len ** (max_n - (i+1)) times (itertools_repeat)
-        # 4. for all elemeents of the n-gram (enumerate)
+        # 4. for all elements of the n-gram (enumerate)
         # The list() cannot be omitted, because the value of i is interpreted
         #  only at zip()-ing, when i is already changed by the outer loop
         yield from zip(*(islice(cycle(chain_from_iterable(
@@ -122,7 +129,7 @@ def readbywords_w_padding(fileobj, n):
     for line in fileobj:  # This simulates reading line by line, which is slower than reading the entire file at once
         for word in line.strip().split(' '):
             yield word.split('#')
-        for _ in range(n-1):  # To handle each line separately simulating sentence per line (SPL) format
+        for _ in range(n - 1):  # To handle each line separately simulating sentence per line (SPL) format
             yield ['DUMMY_WORD']
 
 
@@ -152,7 +159,8 @@ def tim_rec(inp, out, n, no_of_elems, fun):
 
 
 def main():
-    alternatives = {'rec': ('Recursive:', ng_recursive, tim_rec, 'var'),  # Recursive function returns strs not tuples
+    alternatives = {'product': ('Product:', ng_product, tim_rec, 'var'),  # Iterative function returns strs not tuples
+                    'rec': ('Recursive:', ng_recursive, tim_rec, 'var'),  # Recursive function returns strs not tuples
                     'iter-in': ('Iter (list in).:', ng_iter_list_in, tim, 'var'),
                     'iter-out': ('Iter (list out).:', ng_iter_list_out, tim, 'var'),
                     'iter-fixed': ('Iter. fixed:', ng_iter_fix_len, tim, 'fixed'),
@@ -212,7 +220,7 @@ def main():
         print('', 'INIT TIME', '', sep='\n')
         res = repeat(stmt='it, out = general_setup({0}, "{1}", devnull, {2})'.
                      format(read_fun.__name__, in_file, ngramlen), globals=globals(), number=10, repeat=3)
-        print(read_fun.__name__, f'{sum(res)/len(res):.10f}', '(' + ', '.join(f'{r:.10f}' for r in res) + ')')
+        print(read_fun.__name__, f'{sum(res) / len(res):.10f}', '(' + ', '.join(f'{r:.10f}' for r in res) + ')')
     else:
         print('', 'RUNNING TIME', '', sep='\n')
         for _, (name, ngram_fun, tim_fun, _) in alternatives.items():
@@ -221,7 +229,7 @@ def main():
                          stmt='{0}(it, out, {1}, {2}, {3})'.
                          format(tim_fun.__name__, ngramlen, no_of_elems, ngram_fun.__name__),
                          globals=globals(), number=10, repeat=3)
-            print(name, f'{sum(res)/len(res):.10f}', '(' + ', '.join(f'{r:.10f}' for r in res) + ')')
+            print(name, f'{sum(res) / len(res):.10f}', '(' + ', '.join(f'{r:.10f}' for r in res) + ')')
         print()
 
 

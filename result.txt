@@ -1,87 +1,117 @@
 Starting measurements: AWK (recursive) 3-gram, fixed-length fields, padding 10 000 lines
-real: 2,620000
-user: 2,610000
-sys : 0,040000
+real: 0,983330
+user: 0,970000
+sys : 0,010000
 Starting measurements: AWK (recursive) 3-gram, variable-length fields, padding 10 000 lines
-real: 2,620000
-user: 2,616660
-sys : 0,033330
+real: 1,013330
+user: 1,003330
+sys : 0,003330
 Starting measurements: AWK (recursive) 5-gram, fixed-length fields, padding words 1 000 lines
-real: 2,023330
-user: 2,006660
-sys : 0,020000
+real: 0,783330
+user: 0,776660
+sys : 0,006660
 Starting measurements: AWK (recursive) 5-gram, variable-length fields, padding 1 000 lines
-real: 2,110000
-user: 2,096660
-sys : 0,020000
+real: 0,843330
+user: 0,836660
+sys : 0,006660
+Starting measurements: PERL (iterative) 3-gram, fixed-length fields, padding 10 000 lines
+real: 6,406660
+user: 6,390000
+sys : 0,033330
+Starting measurements: PERL (iterative) 3-gram, variable-length fields, padding 10 000 lines
+real: 6,406660
+user: 6,383330
+sys : 0,036660
+Starting measurements: PERL (iterative) 5-gram, fixed-length fields, padding words 1 000 lines
+real: 5,880000
+user: 5,856660
+sys : 0,026660
+Starting measurements: PERL (iterative) 5-gram, variable-length fields, padding 1 000 lines
+real: 6,316660
+user: 6,296660
+sys : 0,023330
 Starting measurements: time python var-algs 3-gram, fixed-length fields, padding 10 000 lines
 
 RUNNING TIME
 
-Recursive: 6.7172839777 (6.7274828440, 6.7263574280, 6.6980116610)
-Iter (list in).: 8.2430886233 (8.2395260290, 8.2275850470, 8.2621547940)
-Iter (list out).: 8.3785881030 (8.3878759990, 8.3798228680, 8.3680654420)
+Product: 1.6039430247 (1.6016602940, 1.6069645900, 1.6032041900)
+Recursive: 2.7668488350 (2.7681021240, 2.7639495530, 2.7684948280)
+Iter (list in).: 4.2932917330 (4.3030939350, 4.2882576530, 4.2885236110)
+Iter (list out).: 4.2406170087 (4.2434523120, 4.2386773370, 4.2397213770)
 
 Starting measurements: time python var-algs 3-gram, variable-length fields, padding 10 000 lines
 
 RUNNING TIME
 
-Recursive: 6.7731994407 (6.7725591220, 6.7745618400, 6.7724773600)
-Iter (list in).: 8.2064635320 (8.2317589710, 8.1821748990, 8.2054567260)
-Iter (list out).: 8.4261459037 (8.4181764990, 8.4267628740, 8.4334983380)
+Product: 1.6213539440 (1.6207911480, 1.6237214470, 1.6195492370)
+Recursive: 2.7821805247 (2.7835841760, 2.7824519570, 2.7805054410)
+Iter (list in).: 4.3408725127 (4.3484206880, 4.3403426680, 4.3338541820)
+Iter (list out).: 4.3190348417 (4.3199723470, 4.3246748930, 4.3124572850)
 
 Starting measurements: time python var-algs 5-gram, fixed-length fields, padding 1 000 lines
 
 RUNNING TIME
 
-Recursive: 5.4831616417 (5.4936710330, 5.4881212660, 5.4676926260)
-Iter (list in).: 6.5929618897 (6.6282630330, 6.5750263750, 6.5755962610)
-Iter (list out).: 6.7402000680 (6.7435301770, 6.7377213270, 6.7393487000)
+Product: 1.2971797757 (1.2963437970, 1.2968000180, 1.2983955120)
+Recursive: 2.2967099060 (2.2958298180, 2.2967297740, 2.2975701260)
+Iter (list in).: 3.9438660813 (3.9497191350, 3.9404370270, 3.9414420820)
+Iter (list out).: 3.9544708033 (3.9602682710, 3.9552732380, 3.9478709010)
 
 Starting measurements: time python var-algs 5-gram, variable-length fields, padding 1 000 lines
 
 RUNNING TIME
 
-Recursive: 5.6467302990 (5.6466112390, 5.6327328790, 5.6608467790)
-Iter (list in).: 6.7334692953 (6.7100098820, 6.7372247240, 6.7531732800)
-Iter (list out).: 6.8831340117 (6.8740133140, 6.8721330180, 6.9032557030)
+Product: 1.3996051247 (1.3990044110, 1.4012671990, 1.3985437640)
+Recursive: 2.4850673877 (2.4897116040, 2.4807847770, 2.4847057820)
+Iter (list in).: 4.2646106257 (4.2667528370, 4.2608470970, 4.2662319430)
+Iter (list out).: 4.2864408280 (4.2858017760, 4.2894629940, 4.2840577140)
 
 Starting measurements: time python fix-algs 3-gram, fixed-length fields, padding 10 000 lines
 
 RUNNING TIME
 
-Iter. fixed: 8.3037015987 (8.3732162250, 8.2743088310, 8.2635797400)
-Iter. fixed2: 7.8334444943 (7.8404172050, 7.8246437670, 7.8352725110)
+Iter. fixed: 4.2735079560 (4.2664573450, 4.2773067120, 4.2767598110)
+Iter. fixed2: 4.2302843273 (4.2313924870, 4.2280081740, 4.2314523210)
 
 Starting measurements: time python fix-algs 5-gram, fixed-length fields, padding 1 000 lines
 
 RUNNING TIME
 
-Iter. fixed: 7.8380579477 (7.8374712490, 7.8550768740, 7.8216257200)
-Iter. fixed2: 7.6412768923 (7.6304032870, 7.6551446740, 7.6382827160)
+Iter. fixed: 4.5591454390 (4.5643392770, 4.5559662450, 4.5571307950)
+Iter. fixed2: 4.5479499320 (4.5489345280, 4.5456063620, 4.5493089060)
 
 Starting measurements: time python init time no-padding
 
 INIT TIME
 
-readbywords_wo_padding 0.0005540747 (0.0006702950, 0.0005013190, 0.0004906100)
+readbywords_wo_padding 0.0001338900 (0.0001607190, 0.0001209660, 0.0001199850)
 Starting measurements: time python init time padding
 
 INIT TIME
 
-readbywords_w_padding 0.0005510380 (0.0006688070, 0.0004955930, 0.0004887140)
+readbywords_w_padding 0.0001359947 (0.0001632170, 0.0001232850, 0.0001214820)
 Starting measurements: mem python var-algs 3-gram, fixed-length fields, padding 10 000 lines
 
 MEMORY USAGE
+
+Product:
+Filename: /home/dlazesz/PycharmProjects/mosaic-n-gram-benchmark/ngram.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+   146     23.4 MiB     23.4 MiB           1   @memory_profile
+   147                                         def mem(inp, out, n, no_of_elems, fun, tim_fun):
+   148     23.5 MiB      0.1 MiB           1       tim_fun(inp, out, n, no_of_elems, fun)
+
 
 Recursive:
 Filename: /home/dlazesz/PycharmProjects/mosaic-n-gram-benchmark/ngram.py
 
 Line #    Mem usage    Increment  Occurrences   Line Contents
 =============================================================
-   139     20.9 MiB     20.9 MiB           1   @memory_profile
-   140                                         def mem(inp, out, n, no_of_elems, fun, tim_fun):
-   141     21.2 MiB      0.4 MiB           1       tim_fun(inp, out, n, no_of_elems, fun)
+   146     23.5 MiB     23.5 MiB           1   @memory_profile
+   147                                         def mem(inp, out, n, no_of_elems, fun, tim_fun):
+   148     23.5 MiB      0.0 MiB           1       tim_fun(inp, out, n, no_of_elems, fun)
 
 
 Iter (list in).:
@@ -89,9 +119,9 @@ Filename: /home/dlazesz/PycharmProjects/mosaic-n-gram-benchmark/ngram.py
 
 Line #    Mem usage    Increment  Occurrences   Line Contents
 =============================================================
-   139     21.2 MiB     21.2 MiB           1   @memory_profile
-   140                                         def mem(inp, out, n, no_of_elems, fun, tim_fun):
-   141     21.2 MiB      0.0 MiB           1       tim_fun(inp, out, n, no_of_elems, fun)
+   146     23.5 MiB     23.5 MiB           1   @memory_profile
+   147                                         def mem(inp, out, n, no_of_elems, fun, tim_fun):
+   148     23.6 MiB      0.1 MiB           1       tim_fun(inp, out, n, no_of_elems, fun)
 
 
 Iter (list out).:
@@ -99,23 +129,33 @@ Filename: /home/dlazesz/PycharmProjects/mosaic-n-gram-benchmark/ngram.py
 
 Line #    Mem usage    Increment  Occurrences   Line Contents
 =============================================================
-   139     21.2 MiB     21.2 MiB           1   @memory_profile
-   140                                         def mem(inp, out, n, no_of_elems, fun, tim_fun):
-   141     21.2 MiB      0.0 MiB           1       tim_fun(inp, out, n, no_of_elems, fun)
+   146     23.6 MiB     23.6 MiB           1   @memory_profile
+   147                                         def mem(inp, out, n, no_of_elems, fun, tim_fun):
+   148     23.6 MiB      0.0 MiB           1       tim_fun(inp, out, n, no_of_elems, fun)
 
 
 Starting measurements: mem python var-algs 3-gram, variable-length fields, padding 10 000 lines
 
 MEMORY USAGE
 
+Product:
+Filename: /home/dlazesz/PycharmProjects/mosaic-n-gram-benchmark/ngram.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+   146     23.4 MiB     23.4 MiB           1   @memory_profile
+   147                                         def mem(inp, out, n, no_of_elems, fun, tim_fun):
+   148     23.5 MiB      0.1 MiB           1       tim_fun(inp, out, n, no_of_elems, fun)
+
+
 Recursive:
 Filename: /home/dlazesz/PycharmProjects/mosaic-n-gram-benchmark/ngram.py
 
 Line #    Mem usage    Increment  Occurrences   Line Contents
 =============================================================
-   139     20.8 MiB     20.8 MiB           1   @memory_profile
-   140                                         def mem(inp, out, n, no_of_elems, fun, tim_fun):
-   141     21.2 MiB      0.4 MiB           1       tim_fun(inp, out, n, no_of_elems, fun)
+   146     23.5 MiB     23.5 MiB           1   @memory_profile
+   147                                         def mem(inp, out, n, no_of_elems, fun, tim_fun):
+   148     23.5 MiB      0.0 MiB           1       tim_fun(inp, out, n, no_of_elems, fun)
 
 
 Iter (list in).:
@@ -123,9 +163,9 @@ Filename: /home/dlazesz/PycharmProjects/mosaic-n-gram-benchmark/ngram.py
 
 Line #    Mem usage    Increment  Occurrences   Line Contents
 =============================================================
-   139     21.2 MiB     21.2 MiB           1   @memory_profile
-   140                                         def mem(inp, out, n, no_of_elems, fun, tim_fun):
-   141     21.2 MiB      0.0 MiB           1       tim_fun(inp, out, n, no_of_elems, fun)
+   146     23.5 MiB     23.5 MiB           1   @memory_profile
+   147                                         def mem(inp, out, n, no_of_elems, fun, tim_fun):
+   148     23.6 MiB      0.1 MiB           1       tim_fun(inp, out, n, no_of_elems, fun)
 
 
 Iter (list out).:
@@ -133,23 +173,33 @@ Filename: /home/dlazesz/PycharmProjects/mosaic-n-gram-benchmark/ngram.py
 
 Line #    Mem usage    Increment  Occurrences   Line Contents
 =============================================================
-   139     21.2 MiB     21.2 MiB           1   @memory_profile
-   140                                         def mem(inp, out, n, no_of_elems, fun, tim_fun):
-   141     21.2 MiB      0.0 MiB           1       tim_fun(inp, out, n, no_of_elems, fun)
+   146     23.6 MiB     23.6 MiB           1   @memory_profile
+   147                                         def mem(inp, out, n, no_of_elems, fun, tim_fun):
+   148     23.6 MiB      0.0 MiB           1       tim_fun(inp, out, n, no_of_elems, fun)
 
 
 Starting measurements: mem python var-algs 5-gram, fixed-length fields, padding 1 000 lines
 
 MEMORY USAGE
 
+Product:
+Filename: /home/dlazesz/PycharmProjects/mosaic-n-gram-benchmark/ngram.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+   146     23.4 MiB     23.4 MiB           1   @memory_profile
+   147                                         def mem(inp, out, n, no_of_elems, fun, tim_fun):
+   148     23.5 MiB      0.1 MiB           1       tim_fun(inp, out, n, no_of_elems, fun)
+
+
 Recursive:
 Filename: /home/dlazesz/PycharmProjects/mosaic-n-gram-benchmark/ngram.py
 
 Line #    Mem usage    Increment  Occurrences   Line Contents
 =============================================================
-   139     20.6 MiB     20.6 MiB           1   @memory_profile
-   140                                         def mem(inp, out, n, no_of_elems, fun, tim_fun):
-   141     20.6 MiB      0.0 MiB           1       tim_fun(inp, out, n, no_of_elems, fun)
+   146     23.5 MiB     23.5 MiB           1   @memory_profile
+   147                                         def mem(inp, out, n, no_of_elems, fun, tim_fun):
+   148     23.5 MiB      0.0 MiB           1       tim_fun(inp, out, n, no_of_elems, fun)
 
 
 Iter (list in).:
@@ -157,9 +207,9 @@ Filename: /home/dlazesz/PycharmProjects/mosaic-n-gram-benchmark/ngram.py
 
 Line #    Mem usage    Increment  Occurrences   Line Contents
 =============================================================
-   139     20.6 MiB     20.6 MiB           1   @memory_profile
-   140                                         def mem(inp, out, n, no_of_elems, fun, tim_fun):
-   141     21.2 MiB      0.6 MiB           1       tim_fun(inp, out, n, no_of_elems, fun)
+   146     23.5 MiB     23.5 MiB           1   @memory_profile
+   147                                         def mem(inp, out, n, no_of_elems, fun, tim_fun):
+   148     23.8 MiB      0.2 MiB           1       tim_fun(inp, out, n, no_of_elems, fun)
 
 
 Iter (list out).:
@@ -167,23 +217,33 @@ Filename: /home/dlazesz/PycharmProjects/mosaic-n-gram-benchmark/ngram.py
 
 Line #    Mem usage    Increment  Occurrences   Line Contents
 =============================================================
-   139     21.2 MiB     21.2 MiB           1   @memory_profile
-   140                                         def mem(inp, out, n, no_of_elems, fun, tim_fun):
-   141     21.2 MiB      0.0 MiB           1       tim_fun(inp, out, n, no_of_elems, fun)
+   146     23.8 MiB     23.8 MiB           1   @memory_profile
+   147                                         def mem(inp, out, n, no_of_elems, fun, tim_fun):
+   148     23.8 MiB      0.0 MiB           1       tim_fun(inp, out, n, no_of_elems, fun)
 
 
 Starting measurements: mem python var-algs 5-gram, variable-length fields, padding 1 000 lines
 
 MEMORY USAGE
 
+Product:
+Filename: /home/dlazesz/PycharmProjects/mosaic-n-gram-benchmark/ngram.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+   146     23.4 MiB     23.4 MiB           1   @memory_profile
+   147                                         def mem(inp, out, n, no_of_elems, fun, tim_fun):
+   148     23.5 MiB      0.1 MiB           1       tim_fun(inp, out, n, no_of_elems, fun)
+
+
 Recursive:
 Filename: /home/dlazesz/PycharmProjects/mosaic-n-gram-benchmark/ngram.py
 
 Line #    Mem usage    Increment  Occurrences   Line Contents
 =============================================================
-   139     20.8 MiB     20.8 MiB           1   @memory_profile
-   140                                         def mem(inp, out, n, no_of_elems, fun, tim_fun):
-   141     20.8 MiB      0.0 MiB           1       tim_fun(inp, out, n, no_of_elems, fun)
+   146     23.5 MiB     23.5 MiB           1   @memory_profile
+   147                                         def mem(inp, out, n, no_of_elems, fun, tim_fun):
+   148     23.5 MiB      0.0 MiB           1       tim_fun(inp, out, n, no_of_elems, fun)
 
 
 Iter (list in).:
@@ -191,9 +251,9 @@ Filename: /home/dlazesz/PycharmProjects/mosaic-n-gram-benchmark/ngram.py
 
 Line #    Mem usage    Increment  Occurrences   Line Contents
 =============================================================
-   139     20.8 MiB     20.8 MiB           1   @memory_profile
-   140                                         def mem(inp, out, n, no_of_elems, fun, tim_fun):
-   141     21.6 MiB      0.8 MiB           1       tim_fun(inp, out, n, no_of_elems, fun)
+   146     23.5 MiB     23.5 MiB           1   @memory_profile
+   147                                         def mem(inp, out, n, no_of_elems, fun, tim_fun):
+   148     23.8 MiB      0.2 MiB           1       tim_fun(inp, out, n, no_of_elems, fun)
 
 
 Iter (list out).:
@@ -201,9 +261,9 @@ Filename: /home/dlazesz/PycharmProjects/mosaic-n-gram-benchmark/ngram.py
 
 Line #    Mem usage    Increment  Occurrences   Line Contents
 =============================================================
-   139     21.6 MiB     21.6 MiB           1   @memory_profile
-   140                                         def mem(inp, out, n, no_of_elems, fun, tim_fun):
-   141     21.6 MiB      0.0 MiB           1       tim_fun(inp, out, n, no_of_elems, fun)
+   146     23.8 MiB     23.8 MiB           1   @memory_profile
+   147                                         def mem(inp, out, n, no_of_elems, fun, tim_fun):
+   148     23.9 MiB      0.1 MiB           1       tim_fun(inp, out, n, no_of_elems, fun)
 
 
 Starting measurements: mem python fix-algs 3-gram, fixed-length fields, padding 10 000 lines
@@ -215,9 +275,9 @@ Filename: /home/dlazesz/PycharmProjects/mosaic-n-gram-benchmark/ngram.py
 
 Line #    Mem usage    Increment  Occurrences   Line Contents
 =============================================================
-   139     20.9 MiB     20.9 MiB           1   @memory_profile
-   140                                         def mem(inp, out, n, no_of_elems, fun, tim_fun):
-   141     21.4 MiB      0.5 MiB           1       tim_fun(inp, out, n, no_of_elems, fun)
+   146     23.4 MiB     23.4 MiB           1   @memory_profile
+   147                                         def mem(inp, out, n, no_of_elems, fun, tim_fun):
+   148     23.6 MiB      0.2 MiB           1       tim_fun(inp, out, n, no_of_elems, fun)
 
 
 Iter. fixed2:
@@ -225,9 +285,9 @@ Filename: /home/dlazesz/PycharmProjects/mosaic-n-gram-benchmark/ngram.py
 
 Line #    Mem usage    Increment  Occurrences   Line Contents
 =============================================================
-   139     21.4 MiB     21.4 MiB           1   @memory_profile
-   140                                         def mem(inp, out, n, no_of_elems, fun, tim_fun):
-   141     21.4 MiB      0.0 MiB           1       tim_fun(inp, out, n, no_of_elems, fun)
+   146     23.6 MiB     23.6 MiB           1   @memory_profile
+   147                                         def mem(inp, out, n, no_of_elems, fun, tim_fun):
+   148     23.6 MiB      0.0 MiB           1       tim_fun(inp, out, n, no_of_elems, fun)
 
 
 Starting measurements: mem python fix-algs 5-gram, fixed-length fields, padding 1 000 lines
@@ -239,9 +299,9 @@ Filename: /home/dlazesz/PycharmProjects/mosaic-n-gram-benchmark/ngram.py
 
 Line #    Mem usage    Increment  Occurrences   Line Contents
 =============================================================
-   139     20.8 MiB     20.8 MiB           1   @memory_profile
-   140                                         def mem(inp, out, n, no_of_elems, fun, tim_fun):
-   141     21.4 MiB      0.6 MiB           1       tim_fun(inp, out, n, no_of_elems, fun)
+   146     23.4 MiB     23.4 MiB           1   @memory_profile
+   147                                         def mem(inp, out, n, no_of_elems, fun, tim_fun):
+   148     23.6 MiB      0.2 MiB           1       tim_fun(inp, out, n, no_of_elems, fun)
 
 
 Iter. fixed2:
@@ -249,8 +309,8 @@ Filename: /home/dlazesz/PycharmProjects/mosaic-n-gram-benchmark/ngram.py
 
 Line #    Mem usage    Increment  Occurrences   Line Contents
 =============================================================
-   139     21.4 MiB     21.4 MiB           1   @memory_profile
-   140                                         def mem(inp, out, n, no_of_elems, fun, tim_fun):
-   141     21.4 MiB      0.0 MiB           1       tim_fun(inp, out, n, no_of_elems, fun)
+   146     23.6 MiB     23.6 MiB           1   @memory_profile
+   147                                         def mem(inp, out, n, no_of_elems, fun, tim_fun):
+   148     23.6 MiB      0.0 MiB           1       tim_fun(inp, out, n, no_of_elems, fun)
 
 

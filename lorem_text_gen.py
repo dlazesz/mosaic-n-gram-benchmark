@@ -68,7 +68,6 @@ parser.add_argument('--no-of-words-max', help='no. of words per sentence part ma
 parser.add_argument('--no-of-sent-parts-min', help='no. of sentence parts min', type=int, default=1)
 parser.add_argument('--no-of-sent-parts-max', help='no. of sentence parts max', type=int, default=5)
 
-
 args = parser.parse_args()
 if any(arg is None for arg in vars(args).values()):
     parser.print_help(sys.stderr)
