@@ -13,10 +13,52 @@ from memory_profiler import profile as memory_profile
 chain_from_iterable = chain.from_iterable
 
 
+def cartesian_product(*args):
+    """Iterative implementation of Cartesian product (like itertools.product)"""
+    result = [[]]
+    for pool in args:
+        result = [x + [y] for x in result for y in pool]
+    return result
+
+
+def cartesian_product2(*args):
+    """Lazy iterative Cartesian product generator (no recursion, no itertools)"""
+    if not args:
+        return
+    # Convert all inputs to lists for multiple iteration
+    pools = [list(pool) for pool in args]
+    # Initialize indices
+    indices = [0] * len(pools)
+    while True:
+        yield [pools[i][indices[i]] for i in range(len(pools))]
+        # Advance indices like an odometer
+        for i in reversed(range(len(pools))):
+            indices[i] += 1
+            if indices[i] < len(pools[i]):
+                break
+            indices[i] = 0
+        else:
+            return  # All combinations exhausted
+
+
 def ng_product(it, n, _):
     """An n-gram feature permutation generator using the built-in product() function"""
     for ngram in n_grams_of_words(it, n):
         for combo in product(*ngram):
+            yield ' '.join(combo)
+
+
+def ng_cproduct(it, n, _):
+    """An n-gram feature permutation generator using the built-in product() function"""
+    for ngram in n_grams_of_words(it, n):
+        for combo in cartesian_product(*ngram):
+            yield ' '.join(combo)
+
+
+def ng_cproduct2(it, n, _):
+    """An n-gram feature permutation generator using the built-in product() function"""
+    for ngram in n_grams_of_words(it, n):
+        for combo in cartesian_product2(*ngram):
             yield ' '.join(combo)
 
 
@@ -159,8 +201,10 @@ def tim_rec(inp, out, n, no_of_elems, fun):
 
 
 def main():
-    alternatives = {'product': ('Product:', ng_product, tim_rec, 'var'),  # Iterative function returns strs not tuples
-                    'rec': ('Recursive:', ng_recursive, tim_rec, 'var'),  # Recursive function returns strs not tuples
+    alternatives = {'product': ('Product:', ng_product, tim_rec, 'var'),  # Iterative fun returns strs not tuples
+                    'cproduct': ('CProduct:', ng_cproduct, tim_rec, 'var'),  # Iterative fun returns strs not tuples
+                    'cproduct2': ('CProduct2:', ng_cproduct, tim_rec, 'var'),  # Iterative fun returns strs not tuples
+                    'rec': ('Recursive:', ng_recursive, tim_rec, 'var'),  # Recursive fun returns strs not tuples
                     'iter-in': ('Iter (list in).:', ng_iter_list_in, tim, 'var'),
                     'iter-out': ('Iter (list out).:', ng_iter_list_out, tim, 'var'),
                     'iter-fixed': ('Iter. fixed:', ng_iter_fix_len, tim, 'fixed'),

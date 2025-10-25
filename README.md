@@ -19,7 +19,7 @@ There are basically two algorithms presented:
     - Recursively or iteratively takes the permutations of all fields of the current word and
       the rest of the words of the n-gram
 
-2. "analog counter" algorithm implemented with itertools
+2. Odometer (i.e. "analog counter") algorithm implemented with itertools
     - Computes parameters ahead of time or dynamically to find the required number of repeats and cycles of each fields
       in each word in the n-gram and executes them in the required order
 
