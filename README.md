@@ -1,7 +1,7 @@
 # Mosaic N-gram Creation Methods Benchmark
 
 This is a sample program to test speed and memory usage for different approaches for mosaic n-gram creation in Python,
-Perl and AWK
+Perl, C and AWK
 
 # Theory
 
@@ -13,13 +13,13 @@ To get all lower-order n-gram from a higher-order variant it is enough to pad th
 to the required order and count the frequency of the prefixes in the required order
 (ignoring n-grams starting with padding words).
 
-There are basically two algorithms presented:
+There are basically two kinds of algorithms presented:
 
 1. Cartesian product-based algorithm
     - Recursively or iteratively takes the permutations of all fields of the current word and
       the rest of the words of the n-gram
 
-2. Odometer (i.e. "analog counter") algorithm implemented with itertools
+2. Odometer (i.e. "analog counter") algorithm implemented with itertools (Python only)
     - Computes parameters ahead of time or dynamically to find the required number of repeats and cycles of each fields
       in each word in the n-gram and executes them in the required order
 
