@@ -64,7 +64,7 @@ int split_words(char *line, char **out) {
     return count;
 }
 
-// Iterative permutation generator: writes directly to fout
+// Iterative permutation generator: writes directly to fout (many small writes)
 void permute_iterative_fwrite(WordSplits *words, int maxn, FILE *fout) {
     int indices[MAX_N];  // Indices for each word's subword
     int level = 0;

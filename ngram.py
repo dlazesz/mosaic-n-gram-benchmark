@@ -5,10 +5,12 @@ import sys
 from math import prod
 from os import devnull
 from timeit import repeat
+from functools import partial
 from argparse import ArgumentParser
+from statistics import mean, median, stdev
 from itertools import product, islice, tee, chain, cycle, repeat as itertools_repeat
 
-from memory_profiler import profile as memory_profile
+from memory_profiler import memory_usage, profile as memory_profile
 
 chain_from_iterable = chain.from_iterable
 
@@ -27,6 +29,9 @@ def cartesian_product2(*args):
         return
     # Convert all inputs to lists for multiple iteration
     pools = [list(pool) for pool in args]
+    # An empty pool means there are no combinations
+    if any(not pool for pool in pools):
+        return
     # Initialize indices
     indices = [0] * len(pools)
     while True:
@@ -49,14 +54,14 @@ def ng_product(it, n, _):
 
 
 def ng_cproduct(it, n, _):
-    """An n-gram feature permutation generator using the built-in product() function"""
+    """An n-gram feature permutation generator using iterative implementation of Cartesian product"""
     for ngram in n_grams_of_words(it, n):
         for combo in cartesian_product(*ngram):
             yield ' '.join(combo)
 
 
 def ng_cproduct2(it, n, _):
-    """An n-gram feature permutation generator using the built-in product() function"""
+    """An n-gram feature permutation generator using lazy iterative Cartesian product generator"""
     for ngram in n_grams_of_words(it, n):
         for combo in cartesian_product2(*ngram):
             yield ' '.join(combo)
@@ -175,19 +180,27 @@ def readbywords_w_padding(fileobj, n):
             yield ['DUMMY_WORD']
 
 
-def general_setup(read_function, inp_file, out_file, n):
-    inp_fh = open(inp_file, encoding='UTF-8')
-    if out_file == '-':
-        out_fh = sys.stdout
-    else:
-        out_fh = open(out_file, 'w', encoding='UTF-8')
-    it = read_function(inp_fh, n)
-    return it, out_fh
+def init_once(in_file, read_fun, ngramlen):
+    with open(in_file, encoding='UTF-8') as inp_fh:
+        with open(devnull, 'w', encoding='UTF-8'):
+            # Constructing the generator does not consume the input.
+            read_fun(inp_fh, ngramlen)
+
+
+def run_once(read_function, inp_file, n, no_of_elems, fun, tim_fun, out_file=devnull):
+    """Run one complete workload, including opening and closing its files."""
+    with open(inp_file, encoding='UTF-8') as inp_fh:
+        if out_file == '-':
+            tim_fun(read_function(inp_fh, n), sys.stdout, n, no_of_elems, fun)
+        else:
+            with open(out_file, 'w', encoding='UTF-8') as out_fh:
+                tim_fun(read_function(inp_fh, n), out_fh, n, no_of_elems, fun)
 
 
 @memory_profile
-def mem(inp, out, n, no_of_elems, fun, tim_fun):
-    tim_fun(inp, out, n, no_of_elems, fun)
+def run_profiled_once(read_function, inp_file, n, no_of_elems, fun, tim_fun, out_file=devnull):
+    """Run one workload with line-by-line memory profiling enabled."""
+    run_once(read_function, inp_file, n, no_of_elems, fun, tim_fun, out_file)
 
 
 def tim(inp, out, n, no_of_elems, fun):
@@ -203,7 +216,7 @@ def tim_rec(inp, out, n, no_of_elems, fun):
 def main():
     alternatives = {'product': ('Product:', ng_product, tim_rec, 'var'),  # Iterative fun returns strs not tuples
                     'cproduct': ('CProduct:', ng_cproduct, tim_rec, 'var'),  # Iterative fun returns strs not tuples
-                    'cproduct2': ('CProduct2:', ng_cproduct, tim_rec, 'var'),  # Iterative fun returns strs not tuples
+                    'cproduct2': ('CProduct2:', ng_cproduct2, tim_rec, 'var'),  # Iterative fun returns strs not tuples
                     'rec': ('Recursive:', ng_recursive, tim_rec, 'var'),  # Recursive fun returns strs not tuples
                     'iter-in': ('Iter (list in).:', ng_iter_list_in, tim, 'var'),
                     'iter-out': ('Iter (list out).:', ng_iter_list_out, tim, 'var'),
@@ -250,30 +263,31 @@ def main():
             exit(2)
         for _, (name, ngram_fun, tim_fun, _) in alternatives.items():
             print(name, file=sys.stderr)
-            iterator, output_fh = general_setup(read_fun, in_file, '-', ngramlen)
-            tim_fun(iterator, output_fh, ngramlen, no_of_elems, ngram_fun)
+            run_once(read_fun, in_file, ngramlen, no_of_elems, ngram_fun, tim_fun, out_file='-')
         exit(0)
 
     if args.mem == 'True':
-        print('', 'MEMORY USAGE', '', sep='\n')
+        print('', 'PEAK MEMORY USAGE (MB)', '', sep='\n')
         for _, (name, ngram_fun, tim_fun, _) in alternatives.items():
-            print(name)
-            iterator, output_fh = general_setup(read_fun, in_file, devnull, ngramlen)
-            mem(iterator, output_fh, ngramlen, no_of_elems, ngram_fun, tim_fun)
+            # Measure the complete workload in an isolated process
+            # Sampling is approximate; very short peaks may be missed by the sampling interval
+            samples = memory_usage((run_profiled_once, (read_fun, in_file, ngramlen, no_of_elems, ngram_fun, tim_fun),
+                                    {'out_file': devnull}), interval=0.01)
+            peak_mb = max(samples)
+            baseline_mb = samples[0]
+            additional_mb = max(0.0, peak_mb - baseline_mb)
+            print(f'{name} peak={peak_mb:.2f} MB RSS; additional≈{additional_mb:.2f} MB above initial sample')
     elif args.run_fun == 'init':
         print('', 'INIT TIME', '', sep='\n')
-        res = repeat(stmt='it, out = general_setup({0}, "{1}", devnull, {2})'.
-                     format(read_fun.__name__, in_file, ngramlen), globals=globals(), number=10, repeat=3)
-        print(read_fun.__name__, f'{sum(res) / len(res):.10f}', '(' + ', '.join(f'{r:.10f}' for r in res) + ')')
+        res = repeat(partial(init_once, in_file, read_fun, ngramlen), number=1, repeat=3)
+        print(read_fun.__name__, f'{mean(res):.10f}', '(' + ', '.join(f'{r:.10f}' for r in res) + ')')
     else:
-        print('', 'RUNNING TIME', '', sep='\n')
+        print('', 'RUNNING TIME (seconds)', '', sep='\n')
         for _, (name, ngram_fun, tim_fun, _) in alternatives.items():
-            res = repeat(setup='it, out = general_setup({0}, "{1}", devnull, {2})'.
-                         format(read_fun.__name__, in_file, ngramlen),
-                         stmt='{0}(it, out, {1}, {2}, {3})'.
-                         format(tim_fun.__name__, ngramlen, no_of_elems, ngram_fun.__name__),
-                         globals=globals(), number=10, repeat=3)
-            print(name, f'{sum(res) / len(res):.10f}', '(' + ', '.join(f'{r:.10f}' for r in res) + ')')
+            res = repeat(partial(run_once, read_fun, in_file, ngramlen, no_of_elems, ngram_fun, tim_fun),
+                         number=1, repeat=3)
+            print(f'{name} mean={mean(res):.10f} median={median(res):.10f} stddev={stdev(res):.10f}')
+            print('  runs:', ', '.join(f'{r:.10f}' for r in res))
         print()
 
 

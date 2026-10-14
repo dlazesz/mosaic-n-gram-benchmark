@@ -1,488 +1,544 @@
 Compile: C (recursive)
 Starting measurements: C (recursive) 3-gram, fixed-length fields, padding 10 000 lines
-real: 0,236660
-user: 0,230000
+real: 0,250000
+user: 0,243330
 sys : 0,013330
 Starting measurements: C (recursive) 3-gram, variable-length fields, padding 10 000 lines
-real: 0,250000
-user: 0,246660
+real: 0,263330
+user: 0,256660
 sys : 0,010000
 Starting measurements: C (recursive) 5-gram, fixed-length fields, padding words 1 000 lines
-real: 0,153330
-user: 0,146660
-sys : 0,010000
+real: 0,160000
+user: 0,150000
+sys : 0,013330
 Starting measurements: C (recursive) 5-gram, variable-length fields, padding 1 000 lines
-real: 0,170000
-user: 0,163330
-sys : 0,006660
-Compile: C (iterative)
-Starting measurements: C (iterative) 3-gram, fixed-length fields, padding 10 000 lines
-real: 0,283330
-user: 0,280000
+real: 0,163330
+user: 0,160000
 sys : 0,010000
-Starting measurements: C (iterative) 3-gram, variable-length fields, padding 10 000 lines
-real: 0,293330
-user: 0,290000
-sys : 0,010000
-Starting measurements: C (iterative) 5-gram, fixed-length fields, padding words 1 000 lines
-real: 0,196660
-user: 0,186660
+Compile: C (iterative: reusable n-gram sized buffer)
+Starting measurements: C (iterative: reusable n-gram sized buffer) 3-gram, fixed-length fields, padding 10 000 lines
+real: 0,310000
+user: 0,303330
 sys : 0,013330
-Starting measurements: C (iterative) 5-gram, variable-length fields, padding 1 000 lines
-real: 0,220000
-user: 0,213330
-sys : 0,010000
-Compile: C (iterative2)
-Starting measurements: C (iterative2) 3-gram, fixed-length fields, padding 10 000 lines
-real: 0,243330
-user: 0,240000
-sys : 0,010000
-Starting measurements: C (iterative2) 3-gram, variable-length fields, padding 10 000 lines
-real: 0,253330
-user: 0,246660
+Starting measurements: C (iterative: reusable n-gram sized buffer) 3-gram, variable-length fields, padding 10 000 lines
+real: 0,306660
+user: 0,300000
 sys : 0,013330
-Starting measurements: C (iterative2) 5-gram, fixed-length fields, padding words 1 000 lines
+Starting measurements: C (iterative: reusable n-gram sized buffer) 5-gram, fixed-length fields, padding words 1 000 lines
+real: 0,203330
+user: 0,193330
+sys : 0,013330
+Starting measurements: C (iterative: reusable n-gram sized buffer) 5-gram, variable-length fields, padding 1 000 lines
+real: 0,210000
+user: 0,203330
+sys : 0,013330
+Compile: C (iterative2: many small writes)
+Starting measurements: C (iterative2: many small writes) 3-gram, fixed-length fields, padding 10 000 lines
 real: 0,236660
-user: 0,230000
-sys : 0,010000
-Starting measurements: C (iterative2) 5-gram, variable-length fields, padding 1 000 lines
+user: 0,226660
+sys : 0,016660
+Starting measurements: C (iterative2: many small writes) 3-gram, variable-length fields, padding 10 000 lines
 real: 0,246660
-user: 0,243330
-sys : 0,006660
-Compile: C (iterative3)
-Starting measurements: C (iterative3) 3-gram, fixed-length fields, padding 10 000 lines
-real: 0,123330
-user: 0,123330
-sys : 0,003330
-Starting measurements: C (iterative3) 3-gram, variable-length fields, padding 10 000 lines
-real: 0,133330
-user: 0,130000
-sys : 0,006660
-Starting measurements: C (iterative3) 5-gram, fixed-length fields, padding words 1 000 lines
-real: 0,080000
-user: 0,080000
-sys : 0,006660
-Starting measurements: C (iterative3) 5-gram, variable-length fields, padding 1 000 lines
-real: 0,090000
-user: 0,090000
-sys : 0,003330
-Starting measurements: AWK (recursive) 3-gram, fixed-length fields, padding 10 000 lines
-real: 0,983330
-user: 0,970000
+user: 0,240000
+sys : 0,013330
+Starting measurements: C (iterative2: many small writes) 5-gram, fixed-length fields, padding words 1 000 lines
+real: 0,256660
+user: 0,250000
 sys : 0,010000
-Starting measurements: AWK (recursive) 3-gram, variable-length fields, padding 10 000 lines
-real: 1,013330
-user: 1,006660
+Starting measurements: C (iterative2: many small writes) 5-gram, variable-length fields, padding 1 000 lines
+real: 0,236660
+user: 0,226660
+sys : 0,016660
+Compile: C (iterative3: large buffer, need length computations)
+Starting measurements: C (iterative3: large buffer, need length computations) 3-gram, fixed-length fields, padding 10 000 lines
+real: 0,130000
+user: 0,123330
+sys : 0,010000
+Starting measurements: C (iterative3: large buffer, need length computations) 3-gram, variable-length fields, padding 10 000 lines
+real: 0,133330
+user: 0,126660
 sys : 0,006660
+Starting measurements: C (iterative3: large buffer, need length computations) 5-gram, fixed-length fields, padding words 1 000 lines
+real: 0,073330
+user: 0,073330
+sys : 0,006660
+Starting measurements: C (iterative3: large buffer, need length computations) 5-gram, variable-length fields, padding 1 000 lines
+real: 0,080000
+user: 0,076660
+sys : 0,006660
+Starting measurements: AWK (recursive) 3-gram, fixed-length fields, padding 10 000 lines
+real: 0,990000
+user: 0,983330
+sys : 0,006660
+Starting measurements: AWK (recursive) 3-gram, variable-length fields, padding 10 000 lines
+real: 1,110000
+user: 1,100000
+sys : 0,010000
 Starting measurements: AWK (recursive) 5-gram, fixed-length fields, padding words 1 000 lines
-real: 0,783330
-user: 0,776660
+real: 0,793330
+user: 0,790000
 sys : 0,006660
 Starting measurements: AWK (recursive) 5-gram, variable-length fields, padding 1 000 lines
-real: 0,843330
-user: 0,833330
-sys : 0,006660
+real: 0,803330
+user: 0,800000
+sys : 0,010000
 Starting measurements: AWK (iterative) 3-gram, fixed-length fields, padding 10 000 lines
-real: 3,853330
-user: 3,840000
-sys : 0,010000
+real: 4,133330
+user: 4,123330
+sys : 0,013330
 Starting measurements: AWK (iterative) 3-gram, variable-length fields, padding 10 000 lines
-real: 3,963330
-user: 3,950000
-sys : 0,010000
-Starting measurements: AWK (iterative) 5-gram, fixed-length fields, padding words 1 000 lines
-real: 4,123330
-user: 4,116660
+real: 4,126660
+user: 4,113330
 sys : 0,006660
+Starting measurements: AWK (iterative) 5-gram, fixed-length fields, padding words 1 000 lines
+real: 4,273330
+user: 4,270000
+sys : 0,010000
 Starting measurements: AWK (iterative) 5-gram, variable-length fields, padding 1 000 lines
-real: 4,543330
-user: 4,533330
+real: 4,453330
+user: 4,450000
 sys : 0,006660
 Starting measurements: PERL (iterative) 3-gram, fixed-length fields, padding 10 000 lines
-real: 6,373330
-user: 6,353330
-sys : 0,036660
-Starting measurements: PERL (iterative) 3-gram, variable-length fields, padding 10 000 lines
-real: 6,420000
-user: 6,400000
-sys : 0,036660
-Starting measurements: PERL (iterative) 5-gram, fixed-length fields, padding words 1 000 lines
-real: 5,810000
-user: 5,790000
-sys : 0,023330
-Starting measurements: PERL (iterative) 5-gram, variable-length fields, padding 1 000 lines
-real: 6,256660
-user: 6,230000
+real: 6,283330
+user: 6,260000
 sys : 0,030000
+Starting measurements: PERL (iterative) 3-gram, variable-length fields, padding 10 000 lines
+real: 6,046660
+user: 6,026660
+sys : 0,033330
+Starting measurements: PERL (iterative) 5-gram, fixed-length fields, padding words 1 000 lines
+real: 5,443330
+user: 5,416660
+sys : 0,030000
+Starting measurements: PERL (iterative) 5-gram, variable-length fields, padding 1 000 lines
+real: 5,623330
+user: 5,600000
+sys : 0,026660
 Starting measurements: time python var-algs 3-gram, fixed-length fields, padding 10 000 lines
 
-RUNNING TIME
+RUNNING TIME (seconds)
 
-Product: 1.6113148513 (1.6075573850, 1.6125831070, 1.6138040620)
-CProduct: 2.0024053210 (2.0013476280, 2.0016614430, 2.0042068920)
-CProduct2: 2.0070031563 (2.0085919330, 2.0062471290, 2.0061704070)
-Recursive: 2.7984314000 (2.8000286620, 2.7971906650, 2.7980748730)
-Iter (list in).: 4.2795979117 (4.2867897190, 4.2776843100, 4.2743197060)
-Iter (list out).: 4.2219692243 (4.2216918640, 4.2236148720, 4.2206009370)
+Product: mean=1.2797934937 median=1.2802369870 stddev=0.0019098765
+  runs: 1.2802369870, 1.2777008880, 1.2814426060
+CProduct: mean=1.6380864110 median=1.6377661720 stddev=0.0021265594
+  runs: 1.6403549280, 1.6377661720, 1.6361381330
+CProduct2: mean=3.2137296070 median=3.2204288540 stddev=0.0129211758
+  runs: 3.1988345580, 3.2204288540, 3.2219254090
+Recursive: mean=2.4625056490 median=2.4589457180 stddev=0.0283096777
+  runs: 2.4589457180, 2.4924269190, 2.4361443100
+Iter (list in).: mean=3.6080391900 median=3.5478137620 stddev=0.1342145902
+  runs: 3.5144861060, 3.7618177020, 3.5478137620
+Iter (list out).: mean=3.3881819273 median=3.3816433410 stddev=0.0278302268
+  runs: 3.4186992790, 3.3642031620, 3.3816433410
 
 Starting measurements: time python var-algs 3-gram, variable-length fields, padding 10 000 lines
 
-RUNNING TIME
+RUNNING TIME (seconds)
 
-Product: 1.6332116713 (1.6262096310, 1.6363574590, 1.6370679240)
-CProduct: 2.0158600290 (2.0158841950, 2.0156996090, 2.0159962830)
-CProduct2: 2.0132732727 (2.0129815960, 2.0141554830, 2.0126827390)
-Recursive: 2.7961473987 (2.7964630590, 2.7961530940, 2.7958260430)
-Iter (list in).: 4.3219239940 (4.3277697230, 4.3231625710, 4.3148396880)
-Iter (list out).: 4.3089592210 (4.3080661510, 4.3073279660, 4.3114835460)
+Product: mean=1.2730189217 median=1.2690484250 stddev=0.0088399935
+  runs: 1.2831479930, 1.2690484250, 1.2668603470
+CProduct: mean=1.6599557403 median=1.6424460960 stddev=0.0341378908
+  runs: 1.6424460960, 1.6381253560, 1.6992957690
+CProduct2: mean=3.1619285453 median=3.1657517480 stddev=0.0127243823
+  runs: 3.1723030030, 3.1477308850, 3.1657517480
+Recursive: mean=2.4273061407 median=2.4361107760 stddev=0.0167819604
+  runs: 2.4361107760, 2.4079541410, 2.4378535050
+Iter (list in).: mean=3.4160626083 median=3.4109545240 stddev=0.0293356128
+  runs: 3.3896164990, 3.4476168020, 3.4109545240
+Iter (list out).: mean=3.4137985423 median=3.4220029170 stddev=0.0161992965
+  runs: 3.4220029170, 3.3951384230, 3.4242542870
 
 Starting measurements: time python var-algs 5-gram, fixed-length fields, padding 1 000 lines
 
-RUNNING TIME
+RUNNING TIME (seconds)
 
-Product: 1.2974860027 (1.2947203580, 1.3005483610, 1.2971892890)
-CProduct: 1.6109584567 (1.6112907660, 1.6112762630, 1.6103083410)
-CProduct2: 1.6155053683 (1.6138271340, 1.6196363330, 1.6130526380)
-Recursive: 2.3174520407 (2.3161484480, 2.3202730280, 2.3159346460)
-Iter (list in).: 3.9479515450 (3.9554393720, 3.9428457810, 3.9455694820)
-Iter (list out).: 3.9464433407 (3.9494463710, 3.9390064060, 3.9508772450)
+Product: mean=1.0519764133 median=1.0532036150 stddev=0.0050934498
+  runs: 1.0563441490, 1.0532036150, 1.0463814760
+CProduct: mean=1.3161888970 median=1.3170651630 stddev=0.0019722556
+  runs: 1.3175711790, 1.3170651630, 1.3139303490
+CProduct2: mean=2.7976203810 median=2.7396823890 stddev=0.1689780180
+  runs: 2.6652327460, 2.9879460080, 2.7396823890
+Recursive: mean=3.0598685907 median=3.2110844580 stddev=0.6122894681
+  runs: 2.3861396710, 3.5823816430, 3.2110844580
+Iter (list in).: mean=3.4738484350 median=3.1826416800 stddev=0.7189117840
+  runs: 4.2926777200, 3.1826416800, 2.9462259050
+Iter (list out).: mean=3.2040058050 median=3.1413827780 stddev=0.1556402351
+  runs: 3.0894315750, 3.3812030620, 3.1413827780
 
 Starting measurements: time python var-algs 5-gram, variable-length fields, padding 1 000 lines
 
-RUNNING TIME
+RUNNING TIME (seconds)
 
-Product: 1.3981086367 (1.3972797270, 1.4022666380, 1.3947795450)
-CProduct: 1.7567144797 (1.7577737160, 1.7570585480, 1.7553111750)
-CProduct2: 1.7523379577 (1.7521845560, 1.7519741430, 1.7528551740)
-Recursive: 2.4820819643 (2.4780525440, 2.4848948790, 2.4832984700)
-Iter (list in).: 4.2525524957 (4.2592947080, 4.2506282160, 4.2477345630)
-Iter (list out).: 4.2748876833 (4.2714555580, 4.2761835520, 4.2770239400)
+Product: mean=1.1665291587 median=1.0592438250 stddev=0.2028389648
+  runs: 1.4004800020, 1.0398636490, 1.0592438250
+CProduct: mean=1.4550043973 median=1.3812748460 stddev=0.1487842164
+  runs: 1.6262555860, 1.3812748460, 1.3574827600
+CProduct2: mean=2.9245699017 median=2.7723921240 stddev=0.2759099118
+  runs: 2.7582588680, 3.2430587130, 2.7723921240
+Recursive: mean=2.0957461827 median=2.0922842730 stddev=0.0106049921
+  runs: 2.1076495140, 2.0922842730, 2.0873047610
+Iter (list in).: mean=3.3665833447 median=3.4423986350 stddev=0.1872909915
+  runs: 3.1532706060, 3.5040807930, 3.4423986350
+Iter (list out).: mean=3.0621476620 median=3.0642497390 stddev=0.0414518844
+  runs: 3.0642497390, 3.0196847330, 3.1025085140
 
 Starting measurements: time python fix-algs 3-gram, fixed-length fields, padding 10 000 lines
 
-RUNNING TIME
+RUNNING TIME (seconds)
 
-Iter. fixed: 4.2557762060 (4.2603227300, 4.2515964700, 4.2554094180)
-Iter. fixed2: 4.2023631997 (4.2009507290, 4.2045527900, 4.2015860800)
+Iter. fixed: mean=3.2820348247 median=3.2819155940 stddev=0.0062210740
+  runs: 3.2819155940, 3.2758742230, 3.2883146570
+Iter. fixed2: mean=3.2298217527 median=3.2266894170 stddev=0.0059450338
+  runs: 3.2366779850, 3.2260978560, 3.2266894170
 
 Starting measurements: time python fix-algs 5-gram, fixed-length fields, padding 1 000 lines
 
-RUNNING TIME
+RUNNING TIME (seconds)
 
-Iter. fixed: 4.5520762750 (4.5565507790, 4.5522696540, 4.5474083920)
-Iter. fixed2: 4.5394249790 (4.5392428360, 4.5419245650, 4.5371075360)
+Iter. fixed: mean=3.4044112913 median=3.3025548100 stddev=0.1904468840
+  runs: 3.2865528070, 3.3025548100, 3.6241262570
+Iter. fixed2: mean=3.3541151680 median=3.3498347970 stddev=0.0304709411
+  runs: 3.3864999740, 3.3498347970, 3.3260107330
 
 Starting measurements: time python init time no-padding
 
 INIT TIME
 
-readbywords_wo_padding 0.0001358590 (0.0001666450, 0.0001213600, 0.0001195720)
+readbywords_wo_padding 0.0000217170 (0.0000418500, 0.0000134410, 0.0000098600)
 Starting measurements: time python init time padding
 
 INIT TIME
 
-readbywords_w_padding 0.0001341403 (0.0001631600, 0.0001198320, 0.0001194290)
+readbywords_w_padding 0.0000214550 (0.0000409370, 0.0000134240, 0.0000100040)
 Starting measurements: mem python var-algs 3-gram, fixed-length fields, padding 10 000 lines
 
-MEMORY USAGE
+PEAK MEMORY USAGE (MB)
 
-Product:
 Filename: /home/dlazesz/PycharmProjects/mosaic-n-gram-benchmark/ngram.py
 
 Line #    Mem usage    Increment  Occurrences   Line Contents
 =============================================================
-   188     23.4 MiB     23.4 MiB           1   @memory_profile
-   189                                         def mem(inp, out, n, no_of_elems, fun, tim_fun):
-   190     23.6 MiB      0.2 MiB           1       tim_fun(inp, out, n, no_of_elems, fun)
+   200     29.0 MiB     29.0 MiB           1   @memory_profile
+   201                                         def run_profiled_once(read_function, inp_file, n, no_of_elems, fun, tim_fun, out_file=devnull):
+   202                                             """Run one workload with line-by-line memory profiling enabled."""
+   203     29.3 MiB      0.3 MiB           1       run_once(read_function, inp_file, n, no_of_elems, fun, tim_fun, out_file)
 
 
-CProduct:
+Product: peak=29.34 MB RSS; additional≈2.94 MB above initial sample
 Filename: /home/dlazesz/PycharmProjects/mosaic-n-gram-benchmark/ngram.py
 
 Line #    Mem usage    Increment  Occurrences   Line Contents
 =============================================================
-   188     23.6 MiB     23.6 MiB           1   @memory_profile
-   189                                         def mem(inp, out, n, no_of_elems, fun, tim_fun):
-   190     23.6 MiB      0.0 MiB           1       tim_fun(inp, out, n, no_of_elems, fun)
+   200     29.4 MiB     29.4 MiB           1   @memory_profile
+   201                                         def run_profiled_once(read_function, inp_file, n, no_of_elems, fun, tim_fun, out_file=devnull):
+   202                                             """Run one workload with line-by-line memory profiling enabled."""
+   203     29.5 MiB      0.1 MiB           1       run_once(read_function, inp_file, n, no_of_elems, fun, tim_fun, out_file)
 
 
-CProduct2:
+CProduct: peak=29.54 MB RSS; additional≈0.16 MB above initial sample
 Filename: /home/dlazesz/PycharmProjects/mosaic-n-gram-benchmark/ngram.py
 
 Line #    Mem usage    Increment  Occurrences   Line Contents
 =============================================================
-   188     23.6 MiB     23.6 MiB           1   @memory_profile
-   189                                         def mem(inp, out, n, no_of_elems, fun, tim_fun):
-   190     23.6 MiB      0.0 MiB           1       tim_fun(inp, out, n, no_of_elems, fun)
+   200     29.6 MiB     29.6 MiB           1   @memory_profile
+   201                                         def run_profiled_once(read_function, inp_file, n, no_of_elems, fun, tim_fun, out_file=devnull):
+   202                                             """Run one workload with line-by-line memory profiling enabled."""
+   203     29.6 MiB      0.0 MiB           1       run_once(read_function, inp_file, n, no_of_elems, fun, tim_fun, out_file)
 
 
-Recursive:
+CProduct2: peak=29.59 MB RSS; additional≈0.03 MB above initial sample
 Filename: /home/dlazesz/PycharmProjects/mosaic-n-gram-benchmark/ngram.py
 
 Line #    Mem usage    Increment  Occurrences   Line Contents
 =============================================================
-   188     23.6 MiB     23.6 MiB           1   @memory_profile
-   189                                         def mem(inp, out, n, no_of_elems, fun, tim_fun):
-   190     23.6 MiB      0.0 MiB           1       tim_fun(inp, out, n, no_of_elems, fun)
+   200     29.8 MiB     29.8 MiB           1   @memory_profile
+   201                                         def run_profiled_once(read_function, inp_file, n, no_of_elems, fun, tim_fun, out_file=devnull):
+   202                                             """Run one workload with line-by-line memory profiling enabled."""
+   203     29.8 MiB      0.0 MiB           1       run_once(read_function, inp_file, n, no_of_elems, fun, tim_fun, out_file)
 
 
-Iter (list in).:
+Recursive: peak=29.82 MB RSS; additional≈0.04 MB above initial sample
 Filename: /home/dlazesz/PycharmProjects/mosaic-n-gram-benchmark/ngram.py
 
 Line #    Mem usage    Increment  Occurrences   Line Contents
 =============================================================
-   188     23.6 MiB     23.6 MiB           1   @memory_profile
-   189                                         def mem(inp, out, n, no_of_elems, fun, tim_fun):
-   190     23.8 MiB      0.1 MiB           1       tim_fun(inp, out, n, no_of_elems, fun)
+   200     29.9 MiB     29.9 MiB           1   @memory_profile
+   201                                         def run_profiled_once(read_function, inp_file, n, no_of_elems, fun, tim_fun, out_file=devnull):
+   202                                             """Run one workload with line-by-line memory profiling enabled."""
+   203     30.2 MiB      0.3 MiB           1       run_once(read_function, inp_file, n, no_of_elems, fun, tim_fun, out_file)
 
 
-Iter (list out).:
+Iter (list in).: peak=30.16 MB RSS; additional≈0.31 MB above initial sample
 Filename: /home/dlazesz/PycharmProjects/mosaic-n-gram-benchmark/ngram.py
 
 Line #    Mem usage    Increment  Occurrences   Line Contents
 =============================================================
-   188     23.8 MiB     23.8 MiB           1   @memory_profile
-   189                                         def mem(inp, out, n, no_of_elems, fun, tim_fun):
-   190     23.8 MiB      0.0 MiB           1       tim_fun(inp, out, n, no_of_elems, fun)
+   200     30.2 MiB     30.2 MiB           1   @memory_profile
+   201                                         def run_profiled_once(read_function, inp_file, n, no_of_elems, fun, tim_fun, out_file=devnull):
+   202                                             """Run one workload with line-by-line memory profiling enabled."""
+   203     30.2 MiB      0.0 MiB           1       run_once(read_function, inp_file, n, no_of_elems, fun, tim_fun, out_file)
 
 
+Iter (list out).: peak=30.17 MB RSS; additional≈0.00 MB above initial sample
 Starting measurements: mem python var-algs 3-gram, variable-length fields, padding 10 000 lines
 
-MEMORY USAGE
+PEAK MEMORY USAGE (MB)
 
-Product:
 Filename: /home/dlazesz/PycharmProjects/mosaic-n-gram-benchmark/ngram.py
 
 Line #    Mem usage    Increment  Occurrences   Line Contents
 =============================================================
-   188     23.4 MiB     23.4 MiB           1   @memory_profile
-   189                                         def mem(inp, out, n, no_of_elems, fun, tim_fun):
-   190     23.5 MiB      0.1 MiB           1       tim_fun(inp, out, n, no_of_elems, fun)
+   200     29.1 MiB     29.1 MiB           1   @memory_profile
+   201                                         def run_profiled_once(read_function, inp_file, n, no_of_elems, fun, tim_fun, out_file=devnull):
+   202                                             """Run one workload with line-by-line memory profiling enabled."""
+   203     29.3 MiB      0.3 MiB           1       run_once(read_function, inp_file, n, no_of_elems, fun, tim_fun, out_file)
 
 
-CProduct:
+Product: peak=29.38 MB RSS; additional≈2.93 MB above initial sample
 Filename: /home/dlazesz/PycharmProjects/mosaic-n-gram-benchmark/ngram.py
 
 Line #    Mem usage    Increment  Occurrences   Line Contents
 =============================================================
-   188     23.5 MiB     23.5 MiB           1   @memory_profile
-   189                                         def mem(inp, out, n, no_of_elems, fun, tim_fun):
-   190     23.5 MiB      0.0 MiB           1       tim_fun(inp, out, n, no_of_elems, fun)
+   200     29.5 MiB     29.5 MiB           1   @memory_profile
+   201                                         def run_profiled_once(read_function, inp_file, n, no_of_elems, fun, tim_fun, out_file=devnull):
+   202                                             """Run one workload with line-by-line memory profiling enabled."""
+   203     29.5 MiB      0.1 MiB           1       run_once(read_function, inp_file, n, no_of_elems, fun, tim_fun, out_file)
 
 
-CProduct2:
+CProduct: peak=29.54 MB RSS; additional≈0.10 MB above initial sample
 Filename: /home/dlazesz/PycharmProjects/mosaic-n-gram-benchmark/ngram.py
 
 Line #    Mem usage    Increment  Occurrences   Line Contents
 =============================================================
-   188     23.5 MiB     23.5 MiB           1   @memory_profile
-   189                                         def mem(inp, out, n, no_of_elems, fun, tim_fun):
-   190     23.5 MiB      0.0 MiB           1       tim_fun(inp, out, n, no_of_elems, fun)
+   200     29.6 MiB     29.6 MiB           1   @memory_profile
+   201                                         def run_profiled_once(read_function, inp_file, n, no_of_elems, fun, tim_fun, out_file=devnull):
+   202                                             """Run one workload with line-by-line memory profiling enabled."""
+   203     29.7 MiB      0.1 MiB           1       run_once(read_function, inp_file, n, no_of_elems, fun, tim_fun, out_file)
 
 
-Recursive:
+CProduct2: peak=29.71 MB RSS; additional≈0.11 MB above initial sample
 Filename: /home/dlazesz/PycharmProjects/mosaic-n-gram-benchmark/ngram.py
 
 Line #    Mem usage    Increment  Occurrences   Line Contents
 =============================================================
-   188     23.5 MiB     23.5 MiB           1   @memory_profile
-   189                                         def mem(inp, out, n, no_of_elems, fun, tim_fun):
-   190     23.5 MiB      0.0 MiB           1       tim_fun(inp, out, n, no_of_elems, fun)
+   200     29.9 MiB     29.9 MiB           1   @memory_profile
+   201                                         def run_profiled_once(read_function, inp_file, n, no_of_elems, fun, tim_fun, out_file=devnull):
+   202                                             """Run one workload with line-by-line memory profiling enabled."""
+   203     29.9 MiB      0.0 MiB           1       run_once(read_function, inp_file, n, no_of_elems, fun, tim_fun, out_file)
 
 
-Iter (list in).:
+Recursive: peak=29.92 MB RSS; additional≈0.01 MB above initial sample
 Filename: /home/dlazesz/PycharmProjects/mosaic-n-gram-benchmark/ngram.py
 
 Line #    Mem usage    Increment  Occurrences   Line Contents
 =============================================================
-   188     23.5 MiB     23.5 MiB           1   @memory_profile
-   189                                         def mem(inp, out, n, no_of_elems, fun, tim_fun):
-   190     23.6 MiB      0.1 MiB           1       tim_fun(inp, out, n, no_of_elems, fun)
+   200     30.0 MiB     30.0 MiB           1   @memory_profile
+   201                                         def run_profiled_once(read_function, inp_file, n, no_of_elems, fun, tim_fun, out_file=devnull):
+   202                                             """Run one workload with line-by-line memory profiling enabled."""
+   203     30.2 MiB      0.2 MiB           1       run_once(read_function, inp_file, n, no_of_elems, fun, tim_fun, out_file)
 
 
-Iter (list out).:
+Iter (list in).: peak=30.17 MB RSS; additional≈0.19 MB above initial sample
 Filename: /home/dlazesz/PycharmProjects/mosaic-n-gram-benchmark/ngram.py
 
 Line #    Mem usage    Increment  Occurrences   Line Contents
 =============================================================
-   188     23.6 MiB     23.6 MiB           1   @memory_profile
-   189                                         def mem(inp, out, n, no_of_elems, fun, tim_fun):
-   190     23.8 MiB      0.1 MiB           1       tim_fun(inp, out, n, no_of_elems, fun)
+   200     30.2 MiB     30.2 MiB           1   @memory_profile
+   201                                         def run_profiled_once(read_function, inp_file, n, no_of_elems, fun, tim_fun, out_file=devnull):
+   202                                             """Run one workload with line-by-line memory profiling enabled."""
+   203     30.2 MiB      0.0 MiB           1       run_once(read_function, inp_file, n, no_of_elems, fun, tim_fun, out_file)
 
 
+Iter (list out).: peak=30.18 MB RSS; additional≈0.00 MB above initial sample
 Starting measurements: mem python var-algs 5-gram, fixed-length fields, padding 1 000 lines
 
-MEMORY USAGE
+PEAK MEMORY USAGE (MB)
 
-Product:
 Filename: /home/dlazesz/PycharmProjects/mosaic-n-gram-benchmark/ngram.py
 
 Line #    Mem usage    Increment  Occurrences   Line Contents
 =============================================================
-   188     23.5 MiB     23.5 MiB           1   @memory_profile
-   189                                         def mem(inp, out, n, no_of_elems, fun, tim_fun):
-   190     23.6 MiB      0.1 MiB           1       tim_fun(inp, out, n, no_of_elems, fun)
+   200     29.1 MiB     29.1 MiB           1   @memory_profile
+   201                                         def run_profiled_once(read_function, inp_file, n, no_of_elems, fun, tim_fun, out_file=devnull):
+   202                                             """Run one workload with line-by-line memory profiling enabled."""
+   203     29.3 MiB      0.3 MiB           1       run_once(read_function, inp_file, n, no_of_elems, fun, tim_fun, out_file)
 
 
-CProduct:
+Product: peak=29.41 MB RSS; additional≈2.92 MB above initial sample
 Filename: /home/dlazesz/PycharmProjects/mosaic-n-gram-benchmark/ngram.py
 
 Line #    Mem usage    Increment  Occurrences   Line Contents
 =============================================================
-   188     23.6 MiB     23.6 MiB           1   @memory_profile
-   189                                         def mem(inp, out, n, no_of_elems, fun, tim_fun):
-   190     23.6 MiB      0.0 MiB           1       tim_fun(inp, out, n, no_of_elems, fun)
+   200     29.5 MiB     29.5 MiB           1   @memory_profile
+   201                                         def run_profiled_once(read_function, inp_file, n, no_of_elems, fun, tim_fun, out_file=devnull):
+   202                                             """Run one workload with line-by-line memory profiling enabled."""
+   203     29.6 MiB      0.2 MiB           1       run_once(read_function, inp_file, n, no_of_elems, fun, tim_fun, out_file)
 
 
-CProduct2:
+CProduct: peak=29.64 MB RSS; additional≈0.20 MB above initial sample
 Filename: /home/dlazesz/PycharmProjects/mosaic-n-gram-benchmark/ngram.py
 
 Line #    Mem usage    Increment  Occurrences   Line Contents
 =============================================================
-   188     23.6 MiB     23.6 MiB           1   @memory_profile
-   189                                         def mem(inp, out, n, no_of_elems, fun, tim_fun):
-   190     23.6 MiB      0.0 MiB           1       tim_fun(inp, out, n, no_of_elems, fun)
+   200     29.6 MiB     29.6 MiB           1   @memory_profile
+   201                                         def run_profiled_once(read_function, inp_file, n, no_of_elems, fun, tim_fun, out_file=devnull):
+   202                                             """Run one workload with line-by-line memory profiling enabled."""
+   203     29.7 MiB      0.0 MiB           1       run_once(read_function, inp_file, n, no_of_elems, fun, tim_fun, out_file)
 
 
-Recursive:
+CProduct2: peak=29.68 MB RSS; additional≈0.05 MB above initial sample
 Filename: /home/dlazesz/PycharmProjects/mosaic-n-gram-benchmark/ngram.py
 
 Line #    Mem usage    Increment  Occurrences   Line Contents
 =============================================================
-   188     23.6 MiB     23.6 MiB           1   @memory_profile
-   189                                         def mem(inp, out, n, no_of_elems, fun, tim_fun):
-   190     23.6 MiB      0.0 MiB           1       tim_fun(inp, out, n, no_of_elems, fun)
+   200     29.8 MiB     29.8 MiB           1   @memory_profile
+   201                                         def run_profiled_once(read_function, inp_file, n, no_of_elems, fun, tim_fun, out_file=devnull):
+   202                                             """Run one workload with line-by-line memory profiling enabled."""
+   203     29.8 MiB      0.1 MiB           1       run_once(read_function, inp_file, n, no_of_elems, fun, tim_fun, out_file)
 
 
-Iter (list in).:
+Recursive: peak=29.84 MB RSS; additional≈0.05 MB above initial sample
 Filename: /home/dlazesz/PycharmProjects/mosaic-n-gram-benchmark/ngram.py
 
 Line #    Mem usage    Increment  Occurrences   Line Contents
 =============================================================
-   188     23.6 MiB     23.6 MiB           1   @memory_profile
-   189                                         def mem(inp, out, n, no_of_elems, fun, tim_fun):
-   190     23.7 MiB      0.1 MiB           1       tim_fun(inp, out, n, no_of_elems, fun)
+   200     29.9 MiB     29.9 MiB           1   @memory_profile
+   201                                         def run_profiled_once(read_function, inp_file, n, no_of_elems, fun, tim_fun, out_file=devnull):
+   202                                             """Run one workload with line-by-line memory profiling enabled."""
+   203     30.2 MiB      0.3 MiB           1       run_once(read_function, inp_file, n, no_of_elems, fun, tim_fun, out_file)
 
 
-Iter (list out).:
+Iter (list in).: peak=30.17 MB RSS; additional≈0.31 MB above initial sample
 Filename: /home/dlazesz/PycharmProjects/mosaic-n-gram-benchmark/ngram.py
 
 Line #    Mem usage    Increment  Occurrences   Line Contents
 =============================================================
-   188     23.7 MiB     23.7 MiB           1   @memory_profile
-   189                                         def mem(inp, out, n, no_of_elems, fun, tim_fun):
-   190     23.7 MiB      0.0 MiB           1       tim_fun(inp, out, n, no_of_elems, fun)
+   200     30.2 MiB     30.2 MiB           1   @memory_profile
+   201                                         def run_profiled_once(read_function, inp_file, n, no_of_elems, fun, tim_fun, out_file=devnull):
+   202                                             """Run one workload with line-by-line memory profiling enabled."""
+   203     30.2 MiB      0.0 MiB           1       run_once(read_function, inp_file, n, no_of_elems, fun, tim_fun, out_file)
 
 
+Iter (list out).: peak=30.17 MB RSS; additional≈0.00 MB above initial sample
 Starting measurements: mem python var-algs 5-gram, variable-length fields, padding 1 000 lines
 
-MEMORY USAGE
+PEAK MEMORY USAGE (MB)
 
-Product:
 Filename: /home/dlazesz/PycharmProjects/mosaic-n-gram-benchmark/ngram.py
 
 Line #    Mem usage    Increment  Occurrences   Line Contents
 =============================================================
-   188     23.5 MiB     23.5 MiB           1   @memory_profile
-   189                                         def mem(inp, out, n, no_of_elems, fun, tim_fun):
-   190     23.6 MiB      0.1 MiB           1       tim_fun(inp, out, n, no_of_elems, fun)
+   200     29.2 MiB     29.2 MiB           1   @memory_profile
+   201                                         def run_profiled_once(read_function, inp_file, n, no_of_elems, fun, tim_fun, out_file=devnull):
+   202                                             """Run one workload with line-by-line memory profiling enabled."""
+   203     29.4 MiB      0.3 MiB           1       run_once(read_function, inp_file, n, no_of_elems, fun, tim_fun, out_file)
 
 
-CProduct:
+Product: peak=29.49 MB RSS; additional≈2.94 MB above initial sample
 Filename: /home/dlazesz/PycharmProjects/mosaic-n-gram-benchmark/ngram.py
 
 Line #    Mem usage    Increment  Occurrences   Line Contents
 =============================================================
-   188     23.6 MiB     23.6 MiB           1   @memory_profile
-   189                                         def mem(inp, out, n, no_of_elems, fun, tim_fun):
-   190     24.0 MiB      0.4 MiB           1       tim_fun(inp, out, n, no_of_elems, fun)
+   200     29.5 MiB     29.5 MiB           1   @memory_profile
+   201                                         def run_profiled_once(read_function, inp_file, n, no_of_elems, fun, tim_fun, out_file=devnull):
+   202                                             """Run one workload with line-by-line memory profiling enabled."""
+   203     30.2 MiB      0.6 MiB           1       run_once(read_function, inp_file, n, no_of_elems, fun, tim_fun, out_file)
 
 
-CProduct2:
+CProduct: peak=30.18 MB RSS; additional≈0.65 MB above initial sample
 Filename: /home/dlazesz/PycharmProjects/mosaic-n-gram-benchmark/ngram.py
 
 Line #    Mem usage    Increment  Occurrences   Line Contents
 =============================================================
-   188     24.0 MiB     24.0 MiB           1   @memory_profile
-   189                                         def mem(inp, out, n, no_of_elems, fun, tim_fun):
-   190     24.1 MiB      0.1 MiB           1       tim_fun(inp, out, n, no_of_elems, fun)
+   200     30.2 MiB     30.2 MiB           1   @memory_profile
+   201                                         def run_profiled_once(read_function, inp_file, n, no_of_elems, fun, tim_fun, out_file=devnull):
+   202                                             """Run one workload with line-by-line memory profiling enabled."""
+   203     30.2 MiB      0.0 MiB           1       run_once(read_function, inp_file, n, no_of_elems, fun, tim_fun, out_file)
 
 
-Recursive:
+CProduct2: peak=30.18 MB RSS; additional≈0.00 MB above initial sample
 Filename: /home/dlazesz/PycharmProjects/mosaic-n-gram-benchmark/ngram.py
 
 Line #    Mem usage    Increment  Occurrences   Line Contents
 =============================================================
-   188     24.1 MiB     24.1 MiB           1   @memory_profile
-   189                                         def mem(inp, out, n, no_of_elems, fun, tim_fun):
-   190     24.1 MiB      0.0 MiB           1       tim_fun(inp, out, n, no_of_elems, fun)
+   200     30.2 MiB     30.2 MiB           1   @memory_profile
+   201                                         def run_profiled_once(read_function, inp_file, n, no_of_elems, fun, tim_fun, out_file=devnull):
+   202                                             """Run one workload with line-by-line memory profiling enabled."""
+   203     30.3 MiB      0.1 MiB           1       run_once(read_function, inp_file, n, no_of_elems, fun, tim_fun, out_file)
 
 
-Iter (list in).:
+Recursive: peak=30.31 MB RSS; additional≈0.06 MB above initial sample
 Filename: /home/dlazesz/PycharmProjects/mosaic-n-gram-benchmark/ngram.py
 
 Line #    Mem usage    Increment  Occurrences   Line Contents
 =============================================================
-   188     24.1 MiB     24.1 MiB           1   @memory_profile
-   189                                         def mem(inp, out, n, no_of_elems, fun, tim_fun):
-   190     24.1 MiB      0.0 MiB           1       tim_fun(inp, out, n, no_of_elems, fun)
+   200     30.3 MiB     30.3 MiB           1   @memory_profile
+   201                                         def run_profiled_once(read_function, inp_file, n, no_of_elems, fun, tim_fun, out_file=devnull):
+   202                                             """Run one workload with line-by-line memory profiling enabled."""
+   203     30.5 MiB      0.2 MiB           1       run_once(read_function, inp_file, n, no_of_elems, fun, tim_fun, out_file)
 
 
-Iter (list out).:
+Iter (list in).: peak=30.51 MB RSS; additional≈0.20 MB above initial sample
 Filename: /home/dlazesz/PycharmProjects/mosaic-n-gram-benchmark/ngram.py
 
 Line #    Mem usage    Increment  Occurrences   Line Contents
 =============================================================
-   188     24.1 MiB     24.1 MiB           1   @memory_profile
-   189                                         def mem(inp, out, n, no_of_elems, fun, tim_fun):
-   190     24.2 MiB      0.1 MiB           1       tim_fun(inp, out, n, no_of_elems, fun)
+   200     30.5 MiB     30.5 MiB           1   @memory_profile
+   201                                         def run_profiled_once(read_function, inp_file, n, no_of_elems, fun, tim_fun, out_file=devnull):
+   202                                             """Run one workload with line-by-line memory profiling enabled."""
+   203     30.6 MiB      0.1 MiB           1       run_once(read_function, inp_file, n, no_of_elems, fun, tim_fun, out_file)
 
 
+Iter (list out).: peak=30.59 MB RSS; additional≈0.09 MB above initial sample
 Starting measurements: mem python fix-algs 3-gram, fixed-length fields, padding 10 000 lines
 
-MEMORY USAGE
+PEAK MEMORY USAGE (MB)
 
-Iter. fixed:
 Filename: /home/dlazesz/PycharmProjects/mosaic-n-gram-benchmark/ngram.py
 
 Line #    Mem usage    Increment  Occurrences   Line Contents
 =============================================================
-   188     23.4 MiB     23.4 MiB           1   @memory_profile
-   189                                         def mem(inp, out, n, no_of_elems, fun, tim_fun):
-   190     23.8 MiB      0.4 MiB           1       tim_fun(inp, out, n, no_of_elems, fun)
+   200     29.1 MiB     29.1 MiB           1   @memory_profile
+   201                                         def run_profiled_once(read_function, inp_file, n, no_of_elems, fun, tim_fun, out_file=devnull):
+   202                                             """Run one workload with line-by-line memory profiling enabled."""
+   203     29.4 MiB      0.3 MiB           1       run_once(read_function, inp_file, n, no_of_elems, fun, tim_fun, out_file)
 
 
-Iter. fixed2:
+Iter. fixed: peak=29.47 MB RSS; additional≈3.02 MB above initial sample
 Filename: /home/dlazesz/PycharmProjects/mosaic-n-gram-benchmark/ngram.py
 
 Line #    Mem usage    Increment  Occurrences   Line Contents
 =============================================================
-   188     23.8 MiB     23.8 MiB           1   @memory_profile
-   189                                         def mem(inp, out, n, no_of_elems, fun, tim_fun):
-   190     23.8 MiB      0.0 MiB           1       tim_fun(inp, out, n, no_of_elems, fun)
+   200     29.6 MiB     29.6 MiB           1   @memory_profile
+   201                                         def run_profiled_once(read_function, inp_file, n, no_of_elems, fun, tim_fun, out_file=devnull):
+   202                                             """Run one workload with line-by-line memory profiling enabled."""
+   203     29.7 MiB      0.1 MiB           1       run_once(read_function, inp_file, n, no_of_elems, fun, tim_fun, out_file)
 
 
+Iter. fixed2: peak=29.68 MB RSS; additional≈0.12 MB above initial sample
 Starting measurements: mem python fix-algs 5-gram, fixed-length fields, padding 1 000 lines
 
-MEMORY USAGE
+PEAK MEMORY USAGE (MB)
 
-Iter. fixed:
 Filename: /home/dlazesz/PycharmProjects/mosaic-n-gram-benchmark/ngram.py
 
 Line #    Mem usage    Increment  Occurrences   Line Contents
 =============================================================
-   188     23.5 MiB     23.5 MiB           1   @memory_profile
-   189                                         def mem(inp, out, n, no_of_elems, fun, tim_fun):
-   190     23.9 MiB      0.4 MiB           1       tim_fun(inp, out, n, no_of_elems, fun)
+   200     29.0 MiB     29.0 MiB           1   @memory_profile
+   201                                         def run_profiled_once(read_function, inp_file, n, no_of_elems, fun, tim_fun, out_file=devnull):
+   202                                             """Run one workload with line-by-line memory profiling enabled."""
+   203     29.4 MiB      0.4 MiB           1       run_once(read_function, inp_file, n, no_of_elems, fun, tim_fun, out_file)
 
 
-Iter. fixed2:
+Iter. fixed: peak=29.42 MB RSS; additional≈3.04 MB above initial sample
 Filename: /home/dlazesz/PycharmProjects/mosaic-n-gram-benchmark/ngram.py
 
 Line #    Mem usage    Increment  Occurrences   Line Contents
 =============================================================
-   188     23.9 MiB     23.9 MiB           1   @memory_profile
-   189                                         def mem(inp, out, n, no_of_elems, fun, tim_fun):
-   190     23.9 MiB      0.0 MiB           1       tim_fun(inp, out, n, no_of_elems, fun)
+   200     29.5 MiB     29.5 MiB           1   @memory_profile
+   201                                         def run_profiled_once(read_function, inp_file, n, no_of_elems, fun, tim_fun, out_file=devnull):
+   202                                             """Run one workload with line-by-line memory profiling enabled."""
+   203     29.6 MiB      0.1 MiB           1       run_once(read_function, inp_file, n, no_of_elems, fun, tim_fun, out_file)
 
 
+Iter. fixed2: peak=29.61 MB RSS; additional≈0.12 MB above initial sample

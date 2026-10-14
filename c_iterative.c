@@ -65,7 +65,7 @@ int split_words(char *line, char **out) {
     return count;
 }
 
-// Iterative permutation generator using zero-copy
+// Iterative permutation generator using zero-copy (reusable n-gram sized buffer)
 void permute_iterative(WordSplits *words, int maxn, FILE *fout) {
     int indices[MAX_N];  // Indices for each word's subword
     int level = 0;

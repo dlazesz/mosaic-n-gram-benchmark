@@ -65,7 +65,7 @@ int split_words(char *line, char **out) {
     return count;
 }
 
-// Correct recursive permutation function
+// Recursive permutation function (mimic AWK's best)
 void permute(WordSplits *words, int word_index, int end, char *buffer, int buf_len, FILE *fout) {
     WordSplits *w = &words[word_index];
 

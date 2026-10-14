@@ -65,7 +65,7 @@ int split_words(char *line, char **out) {
     return count;
 }
 
-// Iterative permutation generator: writes directly to buffer
+// Iterative permutation generator: writes directly to buffer (large buffer, need length computations)
 void permute_iterative_buffered(WordSplits *words, int maxn, char *outbuf, size_t *pos, size_t bufsize, FILE *fout) {
     int indices[MAX_N];  // Indices for each word's subword
     int level = 0;

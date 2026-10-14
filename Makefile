@@ -21,7 +21,11 @@ input:
 .PHONY: input
 
 
-run:
+run: run1 run2 mem
+.PHONY: run
+
+
+run1:
 	@echo "Compile: C (recursive)"
 	@gcc -O3 -march=native -flto -pipe -o c_recursive c_recursive.c
 	@echo "Starting measurements: C (recursive) 3-gram, fixed-length fields, padding 10 000 lines"
@@ -32,35 +36,35 @@ run:
 	@./timeit.sh 3 "cat input_fix.txt  | head -n1000 | ./c_recursive -n 5"
 	@echo "Starting measurements: C (recursive) 5-gram, variable-length fields, padding 1 000 lines"
 	@./timeit.sh 3 "cat input_var.txt | head -n1000 | ./c_recursive -n 5"
-	@echo "Compile: C (iterative)"
+	@echo "Compile: C (iterative: reusable n-gram sized buffer)"
 	@gcc -O3 -march=native -flto -pipe -o c_iterative c_iterative.c
-	@echo "Starting measurements: C (iterative) 3-gram, fixed-length fields, padding 10 000 lines"
+	@echo "Starting measurements: C (iterative: reusable n-gram sized buffer) 3-gram, fixed-length fields, padding 10 000 lines"
 	@./timeit.sh 3 "cat input_fix.txt | ./c_iterative -n 3"
-	@echo "Starting measurements: C (iterative) 3-gram, variable-length fields, padding 10 000 lines"
+	@echo "Starting measurements: C (iterative: reusable n-gram sized buffer) 3-gram, variable-length fields, padding 10 000 lines"
 	@./timeit.sh 3 "cat input_var.txt | ./c_iterative -n 3"
-	@echo "Starting measurements: C (iterative) 5-gram, fixed-length fields, padding words 1 000 lines"
+	@echo "Starting measurements: C (iterative: reusable n-gram sized buffer) 5-gram, fixed-length fields, padding words 1 000 lines"
 	@./timeit.sh 3 "cat input_fix.txt  | head -n1000 | ./c_iterative -n 5"
-	@echo "Starting measurements: C (iterative) 5-gram, variable-length fields, padding 1 000 lines"
+	@echo "Starting measurements: C (iterative: reusable n-gram sized buffer) 5-gram, variable-length fields, padding 1 000 lines"
 	@./timeit.sh 3 "cat input_var.txt | head -n1000 | ./c_iterative -n 5"
-	@echo "Compile: C (iterative2)"
+	@echo "Compile: C (iterative2: many small writes)"
 	@gcc -O3 -march=native -flto -pipe -o c_iterative2 c_iterative2.c
-	@echo "Starting measurements: C (iterative2) 3-gram, fixed-length fields, padding 10 000 lines"
+	@echo "Starting measurements: C (iterative2: many small writes) 3-gram, fixed-length fields, padding 10 000 lines"
 	@./timeit.sh 3 "cat input_fix.txt | ./c_iterative2 -n 3"
-	@echo "Starting measurements: C (iterative2) 3-gram, variable-length fields, padding 10 000 lines"
+	@echo "Starting measurements: C (iterative2: many small writes) 3-gram, variable-length fields, padding 10 000 lines"
 	@./timeit.sh 3 "cat input_var.txt | ./c_iterative2 -n 3"
-	@echo "Starting measurements: C (iterative2) 5-gram, fixed-length fields, padding words 1 000 lines"
+	@echo "Starting measurements: C (iterative2: many small writes) 5-gram, fixed-length fields, padding words 1 000 lines"
 	@./timeit.sh 3 "cat input_fix.txt  | head -n1000 | ./c_iterative2 -n 5"
-	@echo "Starting measurements: C (iterative2) 5-gram, variable-length fields, padding 1 000 lines"
+	@echo "Starting measurements: C (iterative2: many small writes) 5-gram, variable-length fields, padding 1 000 lines"
 	@./timeit.sh 3 "cat input_var.txt | head -n1000 | ./c_iterative2 -n 5"
-	@echo "Compile: C (iterative3)"
+	@echo "Compile: C (iterative3: large buffer, need length computations)"
 	@gcc -O3 -march=native -flto -pipe -o c_iterative3 c_iterative3.c
-	@echo "Starting measurements: C (iterative3) 3-gram, fixed-length fields, padding 10 000 lines"
+	@echo "Starting measurements: C (iterative3: large buffer, need length computations) 3-gram, fixed-length fields, padding 10 000 lines"
 	@./timeit.sh 3 "cat input_fix.txt | ./c_iterative3 -n 3"
-	@echo "Starting measurements: C (iterative3) 3-gram, variable-length fields, padding 10 000 lines"
+	@echo "Starting measurements: C (iterative3: large buffer, need length computations) 3-gram, variable-length fields, padding 10 000 lines"
 	@./timeit.sh 3 "cat input_var.txt | ./c_iterative3 -n 3"
-	@echo "Starting measurements: C (iterative3) 5-gram, fixed-length fields, padding words 1 000 lines"
+	@echo "Starting measurements: C (iterative3: large buffer, need length computations) 5-gram, fixed-length fields, padding words 1 000 lines"
 	@./timeit.sh 3 "cat input_fix.txt  | head -n1000 | ./c_iterative3 -n 5"
-	@echo "Starting measurements: C (iterative3) 5-gram, variable-length fields, padding 1 000 lines"
+	@echo "Starting measurements: C (iterative3: large buffer, need length computations) 5-gram, variable-length fields, padding 1 000 lines"
 	@./timeit.sh 3 "cat input_var.txt | head -n1000 | ./c_iterative3 -n 5"
 	@echo "Starting measurements: AWK (recursive) 3-gram, fixed-length fields, padding 10 000 lines"
 	@./timeit.sh 3 "cat input_fix.txt | ./awk_recursive.sh 3"
@@ -86,6 +90,10 @@ run:
 	@./timeit.sh 3 "cat input_fix.txt  | head -n1000 | ./perl_iterative.pl -n 5"
 	@echo "Starting measurements: PERL (iterative) 5-gram, variable-length fields, padding 1 000 lines"
 	@./timeit.sh 3 "cat input_var.txt | head -n1000 | ./perl_iterative.pl -n 5"
+.PHONY: run1
+
+
+run2:
 	@echo "Starting measurements: time python var-algs 3-gram, fixed-length fields, padding 10 000 lines"
 	@./venv/bin/poetry run python3 ngram.py -i input_fix.txt -n 3 -u padding -r all-variable -m False -w False
 	@echo "Starting measurements: time python var-algs 3-gram, variable-length fields, padding 10 000 lines"
@@ -102,6 +110,10 @@ run:
 	@./venv/bin/poetry run python3 ngram.py -i input_fix_1000.txt -n 3 -f 3 -u no-padding -r init -m False -w False
 	@echo "Starting measurements: time python init time padding"
 	@./venv/bin/poetry run python3 ngram.py -i input_fix_1000.txt -n 3 -f 3 -u padding -r init -m False -w False
+.PHONY: run2
+
+
+mem:
 	@echo "Starting measurements: mem python var-algs 3-gram, fixed-length fields, padding 10 000 lines"
 	@./venv/bin/poetry run python3 ngram.py -i input_fix.txt -n 3 -u padding -r all-variable -m True -w False
 	@echo "Starting measurements: mem python var-algs 3-gram, variable-length fields, padding 10 000 lines"
@@ -114,10 +126,14 @@ run:
 	@./venv/bin/poetry run python3 ngram.py -i input_fix.txt -n 3 -f 3 -u no-padding -r all-fixed -m True -w False
 	@echo "Starting measurements: mem python fix-algs 5-gram, fixed-length fields, padding 1 000 lines"
 	@./venv/bin/poetry run python3 ngram.py -i input_fix_1000.txt -n 5 -f 3 -u no-padding -r all-fixed -m True -w False
-.PHONY: run
+.PHONY: mem
+
+
+format_run1:
+	@make run1 > result1.txt && ./venv/bin/poetry run python3 format_run1.py result1.txt result1.xlsx
 
 
 clean:
 	@ echo "Cleaning up"
-	@rm -rf venv input_fix.txt input_var.txt input_fix_1000.txt input_var_1000.txt
+	@rm -rf venv input_fix.txt input_var.txt input_fix_1000.txt input_var_1000.txt result1.txt c_recursive c_iterative c_iterative2 c_iterative3
 .PHONY: clean
